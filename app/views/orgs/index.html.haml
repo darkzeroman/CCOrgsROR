@@ -7,13 +7,16 @@
       %th= model_class.human_attribute_name(:id)
       %th= model_class.human_attribute_name(:name)
       %th= model_class.human_attribute_name(:description)
+      %th= model_class.human_attribute_name(:permalink)
       %th=t '.actions', :default => t("helpers.actions")
+
   %tbody
     - @orgs.each do |org|
       %tr
         %td= link_to org.id, org_path(org)
-        %td= org.name
+        %td= link_to org.name, org_path(org)
         %td= truncate(org.description)
+        %td= org.permalink
         - if confirm_admin_logged_in? or (confirm_logged_in? and curr_user_orgs_include? @org)
           %td
             = link_to t('.edit', :default => t("helpers.links.edit")), edit_org_path(org), :class => 'btn btn-mini'

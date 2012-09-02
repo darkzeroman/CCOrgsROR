@@ -6,10 +6,6 @@ class AccessController < ApplicationController
     redirect_to :root
   end
   
-  def login
-  	#display login form
-  end
-
   def attempt_login
   	authorized_user = User.authenticate(
   		params[:gt_user_id], params[:password])
