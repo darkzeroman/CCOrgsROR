@@ -27,8 +27,8 @@
           .container.nav-collapse
             %ul.nav
               - unless confirm_admin_logged_in?
-                %li= link_to "Orgs", root_url
-                %li= link_to "Events", root_url
+                %li= link_to "Orgs", root_url(:anchor => 'Orgs')
+                %li= link_to "Events", root_url(:anchor => 'Events')
               - else
                 %li= link_to "Orgs", {:controller=>"orgs", :action=>"index"}
                 %li= link_to "Events", {:controller=>"events", :action=>"index"}

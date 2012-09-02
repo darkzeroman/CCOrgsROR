@@ -1,5 +1,5 @@
 - model_class = Org.new.class
-.page-header
+.page-header#Orgs
   %h1=t '.title', :default => model_class.model_name.human.pluralize
 
 - @orgs.each do |org|
@@ -7,9 +7,8 @@
     =link_to org.name, org_path(org)
     %small= org.description
     %br/
-
 - model_class = Event.new.class
-.page-header
+.page-header#Events
   %h1=t '.title', :default => model_class.model_name.human.pluralize
 
 - @events.each do |event|
