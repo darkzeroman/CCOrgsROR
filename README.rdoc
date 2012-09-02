@@ -1,3 +1,8 @@
+==
+
+Implementing CCOrgs in Rails
+Do not judge the quality, this is something I've been working on quickly and will be cleaning up a great deal.
+
 == Welcome to Rails
 
 Rails is a web-application framework that includes everything needed to create
