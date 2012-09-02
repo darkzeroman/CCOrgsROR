@@ -1,0 +1,78 @@
+!!! 5
+%html(lang="en")
+  %head
+    %meta(charset="utf-8")
+    %meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    //%title= content_for?(:title) ? yield(:title) : "Ccorgsror"
+    %title= @page_title || "CoC Orgs"
+    = csrf_meta_tags
+    / Le HTML5 shim, for IE6-8 support of HTML elements
+    /[if lt IE 9]
+      = javascript_include_tag "http://html5shim.googlecode.com/svn/trunk/html5.js"
+    = stylesheet_link_tag "application", :media => "all"
+    %link(href="images/favicon.ico" rel="shortcut icon")
+    %link(href="images/apple-touch-icon.png" rel="apple-touch-icon")
+    %link(href="images/apple-touch-icon-72x72.png" rel="apple-touch-icon" sizes="72x72")
+    %link(href="images/apple-touch-icon-114x114.png" rel="apple-touch-icon" sizes="114x114")
+
+  %body
+    .navbar.navbar-fixed-top
+      .navbar-inner
+        .container-fluid
+          %a.btn.btn-navbar(data-target=".nav-collapse" data-toggle="collapse")
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          %a.brand(href="/") CC Orgs
+          .container.nav-collapse
+            %ul.nav
+              %li= link_to "Orgs", "/orgs#index"
+              %li= link_to "Events", "/events#index"
+              - if session[:user_id]
+                - curr_user = User.find(session[:user_id].to_i)
+                - if curr_user.is_admin? or curr_user.orgs.include? @org
+                  %li= link_to "Users", "/users#index"
+            - if !session[:user_id]
+              = form_tag({:controller=> 'access', :action => 'attempt_login'}, :class=>['navbar-form', 'pull-right']) do
+                = text_field_tag(:gt_user_id, nil, :placeholder => 'GT User ID')
+                
+                = password_field_tag(:password, nil, :placeholder => "Password")
+                
+                = submit_tag("Log In")
+            - else
+              %ul.nav.pull-right
+                %li.dropdown
+                  %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+                    =session[:gt_user_id]
+                    %b.caret
+                  %ul.dropdown-menu
+                    %a.pull-right{:href=> "access/logout"} Log Out
+            
+              
+
+    .container-fluid
+
+      .row-fluid
+        / .span3
+        /   .well.sidebar-nav
+        /     %ul.nav.nav-list
+        /       %li.nav-header Sidebar
+        /       %li= link_to "Link 1", "/path1"
+        /       %li= link_to "Link 2", "/path2"
+        /       %li= link_to "Link 3", "/path3"
+        / .span9
+        .alert
+          %button.close{"data-dismiss"=>"alert"} x
+          %strong Notice:
+          %br
+          = flash[:notice]
+        
+        = yield
+        
+      %footer
+        %p &copy; Vidhur Vohra 2012
+    /
+      Javascripts
+      \==================================================
+    / Placed at the end of the document so the pages load faster
+    = javascript_include_tag "application"

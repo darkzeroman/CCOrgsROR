@@ -1,0 +1,21 @@
+%h1 Listing guests
+
+%table
+  %tr
+    %th Gt
+    %th Email
+    %th
+    %th
+    %th
+
+  - @guests.each do |guest|
+    %tr
+      %td= guest.gt_id
+      %td= guest.email
+      %td= link_to 'Show', guest
+      %td= link_to 'Edit', edit_guest_path(guest)
+      %td= link_to 'Destroy', guest, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Guest', new_guest_path

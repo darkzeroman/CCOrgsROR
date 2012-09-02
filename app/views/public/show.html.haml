@@ -1,0 +1,32 @@
+%h1= @org.name
+%hr
+%p= @org.description
+%hr
+- model_class = @event.class
+.page-header
+  %h1=t '.title', :default => model_class.model_name.human
+
+%p
+  %strong= model_class.human_attribute_name(:title) + ':'
+  %br
+  = @event.title
+%p
+  %strong= model_class.human_attribute_name(:description) + ':'
+  %br
+  = @event.description
+%p
+  %strong= model_class.human_attribute_name(:start_time) + ':'
+  %br
+  = @event.start_time
+%p
+  %strong= model_class.human_attribute_name(:end_time) + ':'
+  %br
+  = @event.end_time
+%p
+  %strong= model_class.human_attribute_name(:location) + ':'
+  %br
+  = @event.location
+%p
+  %strong= model_class.human_attribute_name(:org_id) + ':'
+  %br
+  = @event.org_id

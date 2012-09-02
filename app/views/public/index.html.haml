@@ -1,0 +1,26 @@
+- model_class = Org.new.class
+.page-header
+  %h1=t '.title', :default => model_class.model_name.human.pluralize
+
+- @orgs.each do |org|
+  %h2
+    =link_to org.name, org_path(org)
+    %small= org.description
+    %br/
+
+- model_class = Event.new.class
+.page-header
+  %h1=t '.title', :default => model_class.model_name.human.pluralize
+
+- @events.each do |event|
+  %h2
+    =link_to event.title, event_path(event)
+    %small= Org.find_by_id(event.org_id).name
+    %br/
+    %small= event.description
+    %br/
+    %p
+      %small= event.start_time
+      to
+      %small= event.end_time
+    %small= event.location
