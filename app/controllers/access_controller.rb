@@ -5,7 +5,7 @@ class AccessController < ApplicationController
   def index
     redirect_to :root
   end
-  
+
   def attempt_login
   	authorized_user = User.authenticate(
   		params[:gt_user_id], params[:password])
@@ -17,7 +17,7 @@ class AccessController < ApplicationController
   		redirect_to :root
   	else
   		flash[:notice] = "Invalid login"
-  		redirect_to(:action => 'login')
+  		redirect_to :root
   	end
   end
 

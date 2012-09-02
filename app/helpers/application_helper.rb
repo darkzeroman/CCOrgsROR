@@ -18,7 +18,7 @@ module ApplicationHelper
   	end
   end
 
-  def curr_user_orgs_include?(user_id="", org=nil)
+  def curr_user_orgs_include?(user_id=nil, org=nil)
 
   	if user_id && User.find_by_id(user_id)
       return User.find_by_id(user_id).orgs.include? org
