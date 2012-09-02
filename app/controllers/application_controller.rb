@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   end
 
   def confirm_admin_logged_in
-    unless session[:user_id] && User.find_by_id(:user_id.to_i).is_admin?
+    unless session[:user_id] && User.find_by_id(session[:user_id]).is_admin?
       flash[:notice] = "Please log in"
       redirect_to(:controller => 'access', :action=>'login')
       return false #halts before filter

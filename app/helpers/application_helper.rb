@@ -8,6 +8,7 @@ module ApplicationHelper
     end
   end
 
+
   def confirm_logged_in?
   	if session[:user_id].blank?
   		

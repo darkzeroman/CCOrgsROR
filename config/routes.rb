@@ -1,5 +1,8 @@
 Ccorgsror::Application.routes.draw do
 
+  match 'login', :to => "access#login"
+  match 'logout', :to => "access#logout"
+
   root :to => "public#index"
   #match 'admin', :to => 'access#menu'
   
@@ -9,7 +12,7 @@ Ccorgsror::Application.routes.draw do
 
   resources :events
 
-  # resources :users
+  resources :users
 
 
 
