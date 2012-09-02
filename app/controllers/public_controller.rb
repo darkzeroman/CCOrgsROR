@@ -10,7 +10,13 @@ class PublicController < ApplicationController
   end
 
   def show
-    @event = Event.find(params[:id])
-    @org = Org.find_by_id(@event.org_id)
+    if Org.find_by_permalink(params[:permalink])
+      org = Org.find_by_permalink(params[:permalink])
+      redirect_to :controller=> "orgs", :action => "show", :id => org.id
+    else
+      flash[:notice] = "Invalid Org Name"
+      redirect_to :root
+    end 
+
   end
 end

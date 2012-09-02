@@ -1,12 +1,19 @@
 Ccorgsror::Application.routes.draw do
 
-  match 'login', :to => "access#login"
-  match 'logout', :to => "access#logout"
-  
 
   root :to => "public#index"
+
+  match 'login', :to => "access#login"
+  match 'logout', :to => "access#logout"
+  match 'access/logout', :to => "access#logout"
+  match 'access/login', :to => "access#login"
+  match 'access/attempt_login', :to => "access#attempt_login"
+
+
+
   #match 'admin', :to => 'access#menu'
-  
+  resources :access
+
   resources :orgs
 
   # resources :guests
@@ -15,6 +22,7 @@ Ccorgsror::Application.routes.draw do
 
   resources :users
 
+  match ':permalink', :to => "public#show" #(/:action(/:id))(.:format)'
 
 
   # The priority is based upon order of creation:
@@ -72,5 +80,5 @@ Ccorgsror::Application.routes.draw do
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
-  match ':controller(/:action(/:id))(.:format)'
+  #match ':controller(/:action(/:id))(.:format)'
 end

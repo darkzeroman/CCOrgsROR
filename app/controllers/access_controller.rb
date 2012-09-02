@@ -3,8 +3,7 @@ class AccessController < ApplicationController
   before_filter :confirm_logged_in, :except => [:login, :attempt_login, :logout]
 
   def index
-  	menu
-  	render('menu')
+    redirect_to :root
   end
   
   def login
@@ -19,7 +18,7 @@ class AccessController < ApplicationController
       session[:user_id] = authorized_user.id
       session[:gt_user_id] = authorized_user.gt_user_id
   		flash[:notice] = "You are now logged in"
-  		redirect_to(:action => 'menu')
+  		redirect_to :root
   	else
   		flash[:notice] = "Invalid login"
   		redirect_to(:action => 'login')
@@ -30,7 +29,7 @@ class AccessController < ApplicationController
     session[:user_id] = nil
     session[:gt_user_id] = nil
   	flash[:notice] = 'You are now logged out'
-  	redirect_to(:action => "login")
+  	redirect_to(:root)
   end
   
  

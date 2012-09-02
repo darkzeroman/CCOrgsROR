@@ -50,7 +50,7 @@
                     =session[:gt_user_id]
                     %b.caret
                   %ul.dropdown-menu
-                    %a.pull-right{:controller=>"access", :action=>"logout"} Log Out
+                    =link_to "Log Out", {:controller=>"access", :action=>"logout"}
             
               
 
@@ -72,6 +72,7 @@
           = flash[:notice]
         
         = yield
+      %hr
         
       %footer
         %p &copy; Vidhur Vohra 2012
