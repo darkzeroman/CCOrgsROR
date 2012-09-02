@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :first_name, :last_name, :gt_id, :gt_user_id, :is_admin, :password
+  attr_accessible :email, :first_name, :last_name, :gt_id, :gt_user_id, :is_admin, :password, :orgs, :org_ids
 
   has_and_belongs_to_many :orgs
 
