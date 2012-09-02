@@ -32,12 +32,10 @@
               - else
                 %li= link_to "Orgs", {:controller=>"orgs", :action=>"index"}
                 %li= link_to "Events", {:controller=>"events", :action=>"index"}
-              - if session[:user_id]
-                - curr_user = User.find(session[:user_id].to_i)
-                - if curr_user.is_admin? or curr_user.orgs.include? @org
+                - if confirm_logged_in?
                   %li= link_to "Users", {:controller=>"users", :action=>"index"}
-            - if !session[:user_id]
-              = form_tag({:controller=> 'access', :action => 'attempt_login'}, :class=>['navbar-form', 'pull-right']) do
+            - unless confirm_logged_in?
+              = form_tag({:controller=> 'access', :action => 'attempt_login'}, :class=>['navbar-form', 'pull-right', 'dl-horizontal']) do
                 = text_field_tag(:gt_user_id, nil, :placeholder => 'GT User ID')
                 
                 = password_field_tag(:password, nil, :placeholder => "Password")
