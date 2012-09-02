@@ -7,6 +7,10 @@
     = f.label :description, :class => 'control-label'
     .controls
       = f.text_area :description, :class => 'ckeditor'
+  .control-group
+    = f.label :permalink, :class => 'control-label'
+    .controls
+      = f.text_field :permalink, :class=> 'text_field'
   .form-actions
     = f.submit nil, :class => 'btn btn-primary'
     = link_to t('.cancel', :default => t("helpers.links.cancel")), orgs_path, :class => 'btn'

@@ -8,8 +8,10 @@
       %th= model_class.human_attribute_name(:first_name)
       %th= model_class.human_attribute_name(:last_name)
       %th= model_class.human_attribute_name(:email)
-      %th= model_class.human_attribute_name(:gt_id)
-      %th= model_class.human_attribute_name(:gt_user_id)
+      %th GT ID
+      //%th GT ID#= model_class.human_attribute_name(:gt_id)
+      %th GT User ID
+      //%th= model_class.human_attribute_name(:gt_user_id, :capitalize=> true)
       %th= model_class.human_attribute_name(:is_admin)
       %th= model_class.human_attribute_name(:password)
       %th= model_class.human_attribute_name(:created_at)

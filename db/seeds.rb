@@ -7,6 +7,8 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 org = Org.new(:name => 'First Org', :description => 'First Org Description', :permalink => "First")
+Org.create(:name => 'Second Org', :description => 'Second Org Description', :permalink => "Second")
+
 event = Event.new(:title=>'First Event', :description => 'Description', :location=>'Klaus')
 
 org.events << event
