@@ -30,7 +30,7 @@
   .control-group
     = f.label :orgs, :class => 'control-label'
     .controls
-      = f.select :org_ids, Org.all.collect {|x| [x.name, x.id]}, {}, :multiple => true
+      = f.select :org_ids, Org.all.collect {|org| [org.name, org.id]}, {}, :multiple => true
   .form-actions
     = f.submit nil, :class => 'btn btn-primary'
     = link_to t('.cancel', :default => t("helpers.links.cancel")), users_path, :class => 'btn'
