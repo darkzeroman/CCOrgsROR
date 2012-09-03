@@ -35,10 +35,10 @@
                 - if confirm_logged_in?
                   %li= link_to "Users", {:controller=>"users", :action=>"index"}
             - unless confirm_logged_in?
-              = form_tag({:controller=> 'access', :action => 'attempt_login'}, :class=>['navbar-form', 'pull-right', 'dl-horizontal']) do
-                = text_field_tag(:gt_user_id, nil, :placeholder => 'GT User ID')
+              = form_tag({:controller=> 'access', :action => 'attempt_login'}, :class => ['navbar-form', 'pull-right', 'dl-horizontal']) do
+                = text_field_tag(:gt_user_id, nil, :placeholder => 'GT User ID', :class => 'input-medium')
                 
-                = password_field_tag(:password, nil, :placeholder => "Password")
+                = password_field_tag(:password, nil, :placeholder => 'Password', :class => 'input-medium')
                 
                 = submit_tag("Log In")
             - else
@@ -53,13 +53,14 @@
               
 
     .container-fluid
-      - unless flash[:notice].blank?
-        .alert
-          %button.close{"data-dismiss"=>"alert"} x
-          %strong Notice:
-          %br
-          = flash[:notice]
-          = flash[:error]
+      .row-fluid
+        - unless flash[:notice].blank?
+          .alert
+            %button.close{"data-dismiss"=>"alert"} x
+            %strong Notice:
+            %br
+            = flash[:notice]
+            = flash[:error]
       .row-fluid
         = yield
       %hr
