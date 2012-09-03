@@ -1,6 +1,10 @@
 - model_class = @org.class
 .page-header
-  %h1= @org.name
+  .span5
+    %h1= @org.name
+  .span2
+    test
+  %br
 
 %p
   %strong= model_class.human_attribute_name(:name) + ':'
