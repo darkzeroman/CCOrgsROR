@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(:version => 20120901180941) do
   end
 
   create_table "guests", :force => true do |t|
-    t.string   "gt_id"
+    t.string   "gt_num_id"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(:version => 20120901180941) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
-    t.string   "gt_id"
+    t.string   "gt_num_id"
     t.string   "gt_user_id"
     t.boolean  "is_admin"
     t.string   "password"

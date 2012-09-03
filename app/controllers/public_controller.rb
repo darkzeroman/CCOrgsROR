@@ -1,9 +1,9 @@
 class PublicController < ApplicationController
   
   def index
-    @events = Event.all
     @orgs = Org.find(:all, :order => 'name')
-
+    @events1 = Event.all
+    
   end
 
   def show

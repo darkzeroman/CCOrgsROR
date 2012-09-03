@@ -11,7 +11,7 @@
 .page-header#Events
   %h1=t '.title', :default => model_class.model_name.human.pluralize
 
-- @events.each do |event|
+- @events1.each do |event|
   %h2
     =link_to event.title, event_path(event)
     %small= Org.find_by_id(event.org_id).name
