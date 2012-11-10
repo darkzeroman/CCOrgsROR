@@ -48,7 +48,8 @@
                     =session[:gt_user_id]
                     %b.caret
                   %ul.dropdown-menu
-                    =link_to "Log Out", {:controller=>"access", :action=>"logout"}
+                    = link_to "Log Out", {:controller => "access", :action=>"logout"}
+                    //= link_to "Profile", edit_user_path(session[:id])
             
               
 
